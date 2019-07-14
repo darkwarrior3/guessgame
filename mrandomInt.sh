@@ -119,6 +119,7 @@ else
             figlet -t -c -f pagga Your Score:
             cat rand.bak~ | figlet -t -c -f pagga
             echo ""
+        echo -e "$RED"
             figlet -t -c -f pagga Opponent Score:
             figlet -t -c -f pagga $moves
         else
@@ -134,9 +135,11 @@ else
             figlet -t -c -f pagga Your Score:
             cat rand2.bak~ | figlet -t -c -f pagga
             echo ""
+        echo -e "$RED"
             figlet -t -c -f pagga Opponent Score:
             figlet -t -c -f pagga $moves
         fi
+        echo -e "$GREEN"
         read -n 1 -p "Press P to play again...." abc
         [[ $abc =~ [Pp] ]] || exit 
     done
