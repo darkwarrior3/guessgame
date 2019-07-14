@@ -117,10 +117,10 @@ else
             nc -lp $PORT > rand.bak~
             clear
             figlet -t -c -f pagga Your Score:
-            figlet -t -c -f pagga $moves
+            cat rand.bak~ | figlet -t -c -f pagga
             echo ""
             figlet -t -c -f pagga Opponent Score:
-            cat rand.bak~ | figlet -t -c -f pagga
+            figlet -t -c -f pagga $moves
         else
             nc -lp $PORT2 > rand2.bak~
             stat=0
@@ -132,10 +132,10 @@ else
             done
             clear
             figlet -t -c -f pagga Your Score:
-            figlet -t -c -f pagga $moves
+            cat rand2.bak~ | figlet -t -c -f pagga
             echo ""
             figlet -t -c -f pagga Opponent Score:
-            cat rand2.bak~ | figlet -t -c -f pagga
+            figlet -t -c -f pagga $moves
         fi
         read -n 1 -p "Press P to play again...." abc
         [[ $abc =~ [Pp] ]] || exit 
