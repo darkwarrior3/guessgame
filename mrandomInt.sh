@@ -45,6 +45,7 @@ else
         read -n 2 lo
         if ! [[ $lo =~ [oO] ]]
         then
+            ip=localhost
             for i in {9999..1000}
             do
                 timeout 0.2 nc -lp $i
@@ -61,8 +62,10 @@ else
             echo PORT2:$PORT2
             nc -lp $PORT > rand.bak~
             echo $range | nc localhost $PORT2
+            #else #online
         fi
-    else
+    else #client
+        ip=localhost
         echo PORT1?
         read -n 5 PORT
         echo PORT2?
@@ -87,7 +90,7 @@ else
             stat=0
             until [ $stat -eq 1 ]
             do
-                echo $randomInt | nc localhost $PORT2 2>/dev/null
+                echo $randomInt | nc $ip $PORT2 2>/dev/null
                 [ $(echo $?) -eq 0 ] && stat=1
                 sleep 1
             done
@@ -110,7 +113,7 @@ else
             stat=0
             until [ $stat -eq 1 ]
             do
-                echo $moves | nc localhost $PORT2 2>/dev/null
+                echo $moves | nc $ip $PORT2 2>/dev/null
                 [ $(echo $?) -eq 0 ] && stat=1
                 sleep 1
             done
@@ -119,7 +122,7 @@ else
             figlet -t -c -f pagga Your Score:
             cat rand.bak~ | figlet -t -c -f pagga
             echo ""
-        echo -e "$RED"
+            echo -e "$RED"
             figlet -t -c -f pagga Opponent Score:
             figlet -t -c -f pagga $moves
         else
@@ -127,7 +130,7 @@ else
             stat=0
             until [ $stat -eq 1 ]
             do
-                echo $moves | nc localhost $PORT 2>/dev/null
+                echo $moves | nc $ip $PORT 2>/dev/null
                 [ $(echo $?) -eq 0 ] && stat=1
                 sleep 1
             done
@@ -135,7 +138,7 @@ else
             figlet -t -c -f pagga Your Score:
             cat rand2.bak~ | figlet -t -c -f pagga
             echo ""
-        echo -e "$RED"
+            echo -e "$RED"
             figlet -t -c -f pagga Opponent Score:
             figlet -t -c -f pagga $moves
         fi
