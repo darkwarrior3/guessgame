@@ -10,6 +10,8 @@ while [ 1 -eq 1 ]; do
     printf "\e[1;36m"
     figlet -t -c -f pagga RANDOM NUMBER GUESSER!!!!!
     [ $range -eq 0 ] && read -p "Input the range: " range
+    clear
+    figlet -t -c -f pagga RANDOM NUMBER GUESSER!!!!!
     figlet -t -c -f pagga Range: 1-$range
     randomInt=$((($RANDOM % $range)+1)) 
     #echo $randomInt
