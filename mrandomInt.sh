@@ -135,11 +135,11 @@ else
                 sleep 1
             done
             clear
-            figlet -t -c -f pagga Your Score:
+            figlet -t -c -f pagga Opponent Score:
             cat rand2.bak~ | figlet -t -c -f pagga
             echo ""
             echo -e "$RED"
-            figlet -t -c -f pagga Opponent Score:
+            figlet -t -c -f pagga Your Score:
             figlet -t -c -f pagga $moves
         fi
         echo -e "$GREEN"
